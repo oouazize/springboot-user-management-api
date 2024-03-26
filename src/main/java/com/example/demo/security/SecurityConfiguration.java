@@ -32,9 +32,9 @@ public class SecurityConfiguration {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/users/batch").permitAll()
                         .requestMatchers("/api/users/me").authenticated()
                         .requestMatchers("/**").permitAll()
-                        // Define other endpoint access rules here
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

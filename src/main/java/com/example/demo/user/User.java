@@ -18,6 +18,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Data
 @Table(name = "users")
 public class User implements UserDetails {
+
+    public User() {}
+
+    public User(String username, Role role) {
+        this.username = username;
+        this.role = role;
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

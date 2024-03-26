@@ -36,7 +36,6 @@ public class AuthController {
     {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        System.out.println(request.getUsername());
         User user = this.userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         boolean isMatch = passwordEncoder.matches(request.getPassword(), user.getPassword());

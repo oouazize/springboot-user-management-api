@@ -22,13 +22,7 @@ public class ApplicationConfig {
     private final UserRepository userRepository;
     @Bean
     public UserDetailsService userDetailsService(){
-        return new UserDetailsService() {
-            @Override
-            public User loadUserByUsername(String username) throws UsernameNotFoundException{
-
-                return  userRepository.findByUsername(username).orElseThrow(() ->new UsernameNotFoundException("UserNotFound"));
-            }
-        };
+        return username -> userRepository.findByUsername(username).orElseThrow(() ->new UsernameNotFoundException("UserNotFound"));
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {

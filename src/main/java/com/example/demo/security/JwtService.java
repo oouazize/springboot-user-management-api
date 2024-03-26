@@ -48,10 +48,6 @@ public class JwtService {
         }
     }
 
-    public String generateToken(UserDetails userdetails)
-    {
-        return this.generateToken(new HashMap<>(),userdetails);
-    }
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         long nowMillis = System.currentTimeMillis();
         long expirationTimeMillis = nowMillis + (1000 * 60 * 60); // 60 minutes
